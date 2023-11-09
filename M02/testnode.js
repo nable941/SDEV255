@@ -1,8 +1,22 @@
-// original array
-var tab = ["Element 1", "Element 2", "Element 3", "Element 4", "Element 5"];
-console.log("initial tab =", tab);
-// capitalize all elements
-tab = tab.map(function(element, index) {
-  return element.toUpperCase();
-});
-console.log("\nfinal tab =", tab);
+function time() {
+    // return time as HH:MM:SS
+    var date = new Date();
+    var hour = date.getHours();
+    var min = date.getMinutes();
+    var sec = date.getSeconds();
+    if (hour < 10) hour = "0" + hour;
+    if (min < 10) min = "0" + min;
+    if (sec < 10) sec = "0" + sec;
+    return "" + hour + ":" + min + ":" + sec + " ";
+   }
+   function wait(sec) {
+     return new Promise(function(resolve, reject) {
+       setTimeout(function() {
+         resolve(sec);  // triggers the then() method
+       }, sec*1000);
+     });
+   }
+   console.log(time(), "Start of timer");
+   wait(2).then(function(sec) {
+     console.log(time(), `End of timer of ${sec} seconds`);
+   });
