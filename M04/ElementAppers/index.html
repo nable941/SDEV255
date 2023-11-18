@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <style type="text/css">
+        .v-enter-from{opacity: 1; background-color:red;}
+        .v-enter-to{opacity: 0; background-color:green;}
+        .v-enter-active{transition: opacity 8s, background-color 2s;}
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  
+  <script>
+    var app = Vue.createApp({
+      data() {
+        return {
+          show: false // initially hidden
+        }
+      },
+      template : `
+        <button @click="show=!show">
+            Produce the effect
+        </button>
+        <transition>
+            <p v-if="show">
+                Paragraph 1
+            </p>
+        </transition>
+      `,
+    });
+    
+    var vm = app.mount("div#app");
+    
+  </script>
+  
+</html>
